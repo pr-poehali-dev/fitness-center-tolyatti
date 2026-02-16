@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "О нас", href: "#about" },
   { label: "Тренировки", href: "#training" },
   { label: "Цены", href: "#pricing" },
-  { label: "Расписание", href: "#schedule" },
+
   { label: "Галерея", href: "#gallery" },
   { label: "Контакты", href: "#contacts" },
 ];
@@ -55,15 +55,6 @@ const PRICING = [
     features: ["Всё включено — полный доступ", "Безлимитные персональные", "Питание и диетолог", "VIP раздевалка", "Заморозка до 30 дней"],
     popular: false,
   },
-];
-
-const SCHEDULE = [
-  { time: "07:00", mon: "Йога", tue: "—", wed: "Йога", thu: "—", fri: "Йога", sat: "Растяжка", sun: "—" },
-  { time: "09:00", mon: "Кроссфит", tue: "Функц. тренинг", wed: "Кроссфит", thu: "Функц. тренинг", fri: "Кроссфит", sat: "Кроссфит", sun: "—" },
-  { time: "11:00", mon: "Пилатес", tue: "Бокс", wed: "Пилатес", thu: "Бокс", fri: "Пилатес", sat: "Бассейн", sun: "Бассейн" },
-  { time: "14:00", mon: "Силовая", tue: "Танцы", wed: "Силовая", thu: "Танцы", fri: "Силовая", sat: "—", sun: "—" },
-  { time: "17:00", mon: "Бокс", tue: "Кроссфит", wed: "MMA", thu: "Кроссфит", fri: "Бокс", sat: "—", sun: "—" },
-  { time: "19:00", mon: "Функц. тренинг", tue: "Йога", wed: "Функц. тренинг", thu: "Йога", fri: "Танцы", sat: "—", sun: "—" },
 ];
 
 const GALLERY = [HERO_IMG, TRAINING_IMG, GROUP_IMG];
@@ -270,50 +261,6 @@ function PricingSection() {
   );
 }
 
-function ScheduleSection() {
-  const days = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
-  const dayKeys = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
-
-  return (
-    <section id="schedule" className="py-20 lg:py-32 bg-card">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="font-body text-primary text-sm tracking-[0.3em] uppercase mb-3">Расписание</p>
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground">
-            РАСПИСАНИЕ <span className="text-primary">ЗАНЯТИЙ</span>
-          </h2>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[700px]">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="font-heading text-sm text-muted-foreground p-4 text-left">Время</th>
-                {days.map((d) => (
-                  <th key={d} className="font-heading text-sm text-muted-foreground p-4 text-center">{d}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {SCHEDULE.map((row) => (
-                <tr key={row.time} className="border-b border-border/50 hover:bg-background/50 transition-colors">
-                  <td className="font-heading text-primary font-semibold p-4">{row.time}</td>
-                  {dayKeys.map((dk) => (
-                    <td key={dk} className="font-body text-sm text-center p-4">
-                      <span className={row[dk] === "—" ? "text-muted-foreground/40" : "text-foreground"}>
-                        {row[dk]}
-                      </span>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function GallerySection() {
   return (
     <section id="gallery" className="py-20 lg:py-32">
@@ -443,7 +390,6 @@ const Index = () => {
       <AboutSection />
       <TrainingSection />
       <PricingSection />
-      <ScheduleSection />
       <GallerySection />
       <ContactsSection />
       <Footer />
